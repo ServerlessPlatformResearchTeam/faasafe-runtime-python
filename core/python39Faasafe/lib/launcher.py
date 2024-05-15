@@ -22,8 +22,8 @@ from os import fdopen
 import sys, os, json, traceback, warnings
 from time import time_ns
 from ctypes import *
-so_file = "/bin/build/faasafe-tracee-lib.so"
-faasafe = CDLL(so_file)
+#so_file = "/bin/build/faasafe-tracee-lib.so"
+#faasafe_functions = CDLL(so_file)
 
 try:
   # if the directory 'virtualenv' is extracted out of a zip file
@@ -54,12 +54,14 @@ if os.getenv("__OW_WAIT_FOR_ACK", "") != "":
 env = os.environ
 i = 0
 while True:
+  '''
   if i == 1:
     faasafe_functions.checkpoint_me()
   if i > 1:
     faasafe_functions.restore_me()
-
+  
   i +=1
+  '''
   line = stdin.readline()
   if not line: break
   args = json.loads(line)
@@ -71,8 +73,10 @@ while True:
       env["__OW_%s" % key.upper()]= args[key]
   res = {}
   try:
+    '''
     if "faasafe-dump-stats" in payload:
         faasafe_functions.dump_stats_me()
+    '''
     start = time_ns()
     res = main(payload)
     TrueTime = time_ns() - start

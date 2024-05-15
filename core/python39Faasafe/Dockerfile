@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-FROM ubuntu:20.04 as groundhog
+FROM ubuntu:20.04 as faasafe
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y
 RUN apt-get install -y build-essential linux-headers-generic libglib2.0-dev git
@@ -78,6 +78,6 @@ ENV OW_EXECUTION_ENV=openwhisk/action-python-v3.9
 # compiler script
 ENV OW_COMPILER=/bin/compile
 
-COPY --from=groundhog /groundhog/build /bin/build
+COPY --from=faasafe /faasafe/build /bin/build
 
 ENTRYPOINT ["/bin/proxy"]
