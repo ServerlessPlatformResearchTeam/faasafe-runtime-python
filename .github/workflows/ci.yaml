@@ -34,9 +34,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: runtime
-
-      - name: Scan Code
-        uses: apache/openwhisk-utilities/scancode@master
+          submodules: recursive
 
       - name: Setup Java
         uses: actions/setup-java@v4

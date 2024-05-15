@@ -1,0 +1,3 @@
+[submodule "core/python39Groundhog/groundhog"]
+	path = core/python39Groundhog/groundhog
+	url = https://gitlab.mpi-sws.org/groundhog/groundhog.git
