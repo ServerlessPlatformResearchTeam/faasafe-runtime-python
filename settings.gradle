@@ -19,6 +19,7 @@ include 'tests'
 
 include 'core:python39Action'
 include 'core:python39Groundhog'
+include 'core:python39Faasafe'
 
 rootProject.name = 'runtime-python'
 

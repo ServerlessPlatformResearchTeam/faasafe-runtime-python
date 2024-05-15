@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-ext.dockerImageName = 'action-python-v3.9-groundhog'
+ext.dockerImageName = 'action-python-v3.9-faasafe'
 apply from: '../../gradle/docker.gradle'
 
 distDocker.dependsOn 'copyReqrCommon'

@@ -21,8 +21,8 @@ RUN apt-get update -y
 RUN apt-get install -y build-essential linux-headers-generic libglib2.0-dev git
 
 # clone groundhog
-RUN git clone https://gitlab.mpi-sws.org/groundhog/groundhog.git /groundhog
-WORKDIR /groundhog
+RUN git clone https://github.com/ServerlessPlatformResearchTeam/faasafe.git /faasafe
+WORKDIR /faasafe
 RUN make
 
 # build go proxy from source

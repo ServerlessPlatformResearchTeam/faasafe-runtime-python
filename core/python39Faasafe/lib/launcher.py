@@ -22,8 +22,8 @@ from os import fdopen
 import sys, os, json, traceback, warnings
 from time import time_ns
 from ctypes import *
-so_file = "/bin/build/groundhog-tracee-lib.so"
-groundhog_functions = CDLL(so_file)
+so_file = "/bin/build/faasafe-tracee-lib.so"
+faasafe = CDLL(so_file)
 
 try:
   # if the directory 'virtualenv' is extracted out of a zip file
@@ -55,9 +55,9 @@ env = os.environ
 i = 0
 while True:
   if i == 1:
-    groundhog_functions.checkpoint_me()
+    faasafe_functions.checkpoint_me()
   if i > 1:
-    groundhog_functions.restore_me()
+    faasafe_functions.restore_me()
 
   i +=1
   line = stdin.readline()
@@ -71,8 +71,8 @@ while True:
       env["__OW_%s" % key.upper()]= args[key]
   res = {}
   try:
-    if "groundhog-dump-stats" in payload:
-        groundhog_functions.dump_stats_me()
+    if "faasafe-dump-stats" in payload:
+        faasafe_functions.dump_stats_me()
     start = time_ns()
     res = main(payload)
     TrueTime = time_ns() - start
