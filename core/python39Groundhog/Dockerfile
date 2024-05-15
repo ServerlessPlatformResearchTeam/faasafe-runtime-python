@@ -15,12 +15,13 @@
 # limitations under the License.
 #
 
-# make groundhog so
-FROM ubuntu:22.04 as groundhog
+FROM ubuntu:20.04 as groundhog
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y
-RUN apt-get install -y build-essential linux-headers-generic libglib2.0-dev
-COPY groundhog /groundhog
+RUN apt-get install -y build-essential linux-headers-generic libglib2.0-dev git
+
+# clone groundhog
+RUN git clone https://gitlab.mpi-sws.org/groundhog/groundhog.git /groundhog
 WORKDIR /groundhog
 RUN make
 
