@@ -18,20 +18,8 @@
 ext.dockerImageName = 'action-python-v3.9'
 apply from: '../../gradle/docker.gradle'
 
-distDocker.dependsOn 'copyLib'
-distDocker.dependsOn 'copyBin'
 distDocker.dependsOn 'copyReqrCommon'
 distDocker.finalizedBy('cleanup')
-
-task copyLib(type: Copy) {
-    from '../python3Action/lib'
-    into './lib'
-}
-
-task copyBin(type: Copy) {
-    from '../python3Action/bin'
-    into './bin'
-}
 
 task copyReqrCommon(type: Copy) {
     from '../requirements_common.txt'
@@ -39,7 +27,5 @@ task copyReqrCommon(type: Copy) {
 }
 
 task cleanup(type: Delete) {
-    delete 'bin'
-    delete 'lib'
     delete 'requirements_common.txt'
 }
