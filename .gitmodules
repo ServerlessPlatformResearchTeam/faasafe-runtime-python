@@ -1,3 +1,6 @@
 [submodule "core/python39Groundhog/groundhog"]
 	path = core/python39Groundhog/groundhog
 	url = https://gitlab.mpi-sws.org/groundhog/groundhog.git
+[submodule "core/python39Faasafe/faasafe"]
+	path = core/python39Faasafe/faasafe
+	url = https://github.com/ServerlessPlatformResearchTeam/faasafe.git
